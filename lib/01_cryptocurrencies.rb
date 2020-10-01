@@ -5,21 +5,19 @@ value = ["6558.07", "468.95", "0.487526", "762.84", "8.86", "85.26", "0.151268",
 
 value.map!{ |x| x.to_f }
 combined_hash = Hash[cryptocurrency.zip(value)]
-# puts combined_hash
-# puts "#{value.max}"
 
 # La ou les crypto qui ont la plus grosse valeur.
-value_max = combined_hash.max_by{|k,v| v}
+value_max = combined_hash.group_by{|k, v| v}.max_by{|k, v| k}.last.to_h
 puts "La crypto qui a la plus grosse valeur est #{value_max}"
 
 #La ou les crypto qui ont la plus petite valeur.
-value_min = combined_hash.min_by{|k,v| v}
-puts "La crypto qui a la plus petite valeur est #{value_min}"
+value_min = combined_hash.group_by{|k, v| v}.min_by{|k, v| k}.last.to_h
+puts "Les cryptos qui ont la plus petite valeur sont #{value_min}"
 
-# Les devises dont le cours est inférieur à 6000
-value_under_6000 = combined_hash.select {|k,v| v < 1}
+# # Les devises dont le cours est inférieur à 6000
+value_under_6000 = combined_hash.select {|k,v| v < 6000}
 puts "Les devises dont le cours est inférieur à 6000 #{value_under_6000}"
-
-#La devise la plus chère parmi celles dont le cours est inférieur à 6000.
-value_max_under_6000 = value_under_6000.max_by{|k,v| v}
+#
+# #La devise la plus chère parmi celles dont le cours est inférieur à 6000.
+value_max_under_6000 = value_under_6000.group_by{|k, v| v}.max_by{|k, v| k}.last.to_h
 puts "La devise la plus chère parmi celles dont le cours est inférieur à 6000 est #{value_max_under_6000}"
