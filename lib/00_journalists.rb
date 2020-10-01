@@ -34,5 +34,7 @@ twitter.each do |handle|
   handles_size << handle.length
 end
 for i in handles_size.min..handles_size.max
-  puts "Il y a #{handles_size.count(i)} handles qui possède #{i-1} caractères"
+  if handles_size.count(i) != 0
+    puts "Il y a #{handles_size.count(i)} handles qui possède #{i-1} caractères"
+  end
 end
