@@ -16,7 +16,7 @@ puts "Les cryptos qui ont la plus petite valeur sont #{value_min}"
 
 # # Les devises dont le cours est inférieur à 6000
 value_under_6000 = combined_hash.select {|k,v| v < 6000}
-puts "Les devises dont le cours est inférieur à 6000 #{value_under_6000}"
+# puts "Les devises dont le cours est inférieur à 6000 #{value_under_6000}"
 #
 # #La devise la plus chère parmi celles dont le cours est inférieur à 6000.
 value_max_under_6000 = value_under_6000.group_by{|k, v| v}.max_by{|k, v| k}.last.to_h
